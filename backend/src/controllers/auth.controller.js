@@ -62,13 +62,14 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    generateToken(user._id, res);
+    cosnt token= generateToken(user._id, res);
 
     res.status(200).json({
       _id: user._id,
       fullName: user.fullName,
       email: user.email,
       profilePic: user.profilePic,
+      token,
     });
   } catch (error) {
     console.log("Error in login controller", error.message);
